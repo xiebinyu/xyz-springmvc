@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+  <context:component-scan base-package="com.xyz.sm.config">
+    <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+  </context:component-scan>
+
+  <!-- 将config.properties内容加载到spring上下文中，任意一种方式均可 -->
+  <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+    <!--<property name="localOverride" value="true" />-->
+    <!--<property name="locations">-->
+      <!--<list>-->
+        <!--<value>classpath:config.properties</value>-->
+      <!--</list>-->
+    <!--</property>-->
+    <!--<property name="order" value="1" />-->
+    <!--<property name="ignoreUnresolvablePlaceholders" value="true" />-->
+  <!--</bean>-->
+  <context:property-placeholder location="classpath:config.properties" />
+
+</beans>
