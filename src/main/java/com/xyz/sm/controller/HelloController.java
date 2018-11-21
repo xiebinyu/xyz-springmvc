@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HelloController {
@@ -28,5 +29,13 @@ public class HelloController {
   @RequestMapping("/showQQ")
   public String showQQ() {
     return config.getQq();
+  }
+
+  @RequestMapping("/hello")
+  public ModelAndView hello(String name) {
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("name", name);
+    mv.setViewName("hello");
+    return mv;
   }
 }
